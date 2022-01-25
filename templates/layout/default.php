@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Adzuna Oferty Pracy';
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,12 +38,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+            <a href="<?= $this->Url->build('/') ?>">Adzuna Oferty Pracy</a>
         </div>
-        <?= $this->Html->link(__('Link'), ['action' => 'somewhere'], ['class' => 'side-nav-item']) ?>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <?= $this->Html->link(__('Przeglądaj oferty pracy'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <!--            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>-->
+<!--            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>-->
         </div>
     </nav>
     <main class="main">
