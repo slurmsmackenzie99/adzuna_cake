@@ -1,5 +1,11 @@
 <?php
 namespace App\Controller;
+/**
+ * Postings Controller
+ *
+ * @property \App\Model\Table\PostingsTable $Postings
+ * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ */
 
 class PostingsController extends AppController
 {
@@ -18,20 +24,26 @@ class PostingsController extends AppController
     }
     public function view($slug = null)
     {
-        $posting = $this->Postings->findBySlug($slug)->firstOrFail();
+        $posting = $this->Postings
+            ->findBySlug($slug)
+            ->contain('Tags')
+            ->firstOrFail();
         $this->set(compact('posting'));
     }
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
     public function add()
     {
         $posting = $this->Postings->newEmptyEntity();
         if ($this->request->is('post')) {
             $posting = $this->Postings->patchEntity($posting, $this->request->getData());
 
-            // Hardcoding the user_id is temporary, and will be removed later
-            // when we build authentication out.
             $posting->user_id = 1;
 
-            if ($this->Posting->save($posting)) {
+            if ($this->Postings->save($posting)) {
                 $this->Flash->success(__('Twoje ogłoszenie zostało zapisane'));
                 return $this->redirect(['action' => 'index']);
             }
@@ -47,6 +59,7 @@ class PostingsController extends AppController
     {
         $posting = $this->Postings
             ->findBySlug($slug)
+            ->contain('Tags')
             ->firstOrFail();
 
         if ($this->request->is(['post', 'put'])) {
@@ -70,5 +83,23 @@ class PostingsController extends AppController
             $this->Flash->success(__('Oferta pracy {0} została usunięta', $posting->title));
             return $this->redirect(['action' => 'index']);
         }
+    }
+    public function tags()
+    {
+        // The 'pass' key is provided by CakePHP and contains all
+        // the passed URL path segments in the request.
+        $tags = $this->request->getParam('pass');
+
+        // Use the ArticlesTable to find tagged articles.
+        $postings = $this->Postings->find('tagged', [
+            'tags' => $tags
+        ])
+            ->all();
+
+        // Pass variables into the view template context.
+        $this->set([
+            'postings' => $postings,
+            'tags' => $tags
+        ]);
     }
 }
