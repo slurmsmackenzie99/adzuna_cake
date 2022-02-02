@@ -55,7 +55,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-
+        $this->Authorization->authorize();
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));

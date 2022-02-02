@@ -1,12 +1,15 @@
 <?php
+
 namespace App\Controller;
+
+use function Composer\Autoload\includeFile;
+
 /**
  * Postings Controller
  *
  * @property \App\Model\Table\PostingsTable $Postings
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-
 class PostingsController extends AppController
 {
     public function initialize(): void
@@ -16,20 +19,31 @@ class PostingsController extends AppController
         $this->loadComponent('Paginator');
         $this->loadComponent('Flash'); // Include the FlashComponent
     }
+
     public function index()
     {
+        $this->Authorization->skipAuthorization();
+
         $this->loadComponent('Paginator');
         $postings = $this->Paginator->paginate($this->Postings->find());
         $this->set(compact('postings'));
+
+        if ($this->request->is('post')) {
+
+        }
     }
+
     public function view($slug = null)
     {
+        $this->Authorization->skipAuthorization();
+
         $posting = $this->Postings
             ->findBySlug($slug)
             ->contain('Tags')
             ->firstOrFail();
         $this->set(compact('posting'));
     }
+
     /**
      * Add method
      *
@@ -38,10 +52,12 @@ class PostingsController extends AppController
     public function add()
     {
         $posting = $this->Postings->newEmptyEntity();
+        $this->Authorization->authorize($posting);
+
         if ($this->request->is('post')) {
             $posting = $this->Postings->patchEntity($posting, $this->request->getData());
 
-            $posting->user_id = 1;
+            $posting->user_id = $this->request->getAttribute('identity')->getIdentifier();
 
             if ($this->Postings->save($posting)) {
                 $this->Flash->success(__('Twoje ogłoszenie zostało zapisane'));
@@ -55,15 +71,19 @@ class PostingsController extends AppController
         $this->set('tags', $tags);
         $this->set('posting', $posting);
     }
+
     public function edit($slug)
     {
         $posting = $this->Postings
             ->findBySlug($slug)
             ->contain('Tags')
             ->firstOrFail();
+        $this->Authorization->authorize($posting);
 
         if ($this->request->is(['post', 'put'])) {
-            $this->Postings->patchEntity($posting, $this->request->getData());
+            $this->Postings->patchEntity($posting, $this->request->getData(), [
+                'accessibleFields' => ['user_id' => false]
+            ]);
             if ($this->Postings->save($posting)) {
                 $this->Flash->success(__('Oferta pracy została uaktualniona'));
                 return $this->redirect(['action' => 'index']);
@@ -79,13 +99,17 @@ class PostingsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
 
         $posting = $this->Postings->findBySlug($slug)->firstOrFail();
+        $this->Authorization->authorize($posting);
+
         if ($this->Postings->delete($posting)) {
             $this->Flash->success(__('Oferta pracy {0} została usunięta', $posting->title));
             return $this->redirect(['action' => 'index']);
         }
     }
+
     public function tags()
     {
+        $this->Authorization->skipAuthorization();
         // The 'pass' key is provided by CakePHP and contains all
         // the passed URL path segments in the request.
         $tags = $this->request->getParam('pass');
@@ -102,4 +126,16 @@ class PostingsController extends AppController
             'tags' => $tags
         ]);
     }
+
+    public function search()
+    {
+        $appId = "31746dcd";
+        $appKey = "d3589b477595d896b7627c76dfd0b8ef";
+        $baseURL = "https://api.adzuna.com/v1/api/";
+//        $header = {
+//        'Content-Type': 'application/json';
+//        }
+        $country = 'pl';
+        $targetURL = $baseURL . "jobs";
+}
 }

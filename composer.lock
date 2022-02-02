@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53975ae696f14950b6f60c1a2aeb4e00",
+    "content-hash": "54e15a24111dc18734e2ebba173fcead",
     "packages": [
         {
             "name": "cakephp/authentication",
@@ -484,6 +484,53 @@
                 }
             ],
             "time": "2021-10-28T20:44:15+00:00"
+        },
+        {
+            "name": "holt59/cakephp3-bootstrap-helpers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Holt59/cakephp3-bootstrap-helpers.git",
+                "reference": "116335bb4411b30ba6ea208179fd27eae21ac458"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Holt59/cakephp3-bootstrap-helpers/zipball/116335bb4411b30ba6ea208179fd27eae21ac458",
+                "reference": "116335bb4411b30ba6ea208179fd27eae21ac458",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": ">=3.7.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "~2.1",
+                "phpunit/phpunit": "<6.0"
+            },
+            "default-branch": true,
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bootstrap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Bootstrap Helpers for CakePHP 3.0",
+            "keywords": [
+                "bootstrap",
+                "cakephp"
+            ],
+            "support": {
+                "issues": "https://github.com/Holt59/cakephp3-bootstrap-helpers/issues",
+                "source": "https://github.com/Holt59/cakephp3-bootstrap-helpers/tree/v3.1.5"
+            },
+            "time": "2020-09-29T08:19:17+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -6145,7 +6192,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "holt59/cakephp3-bootstrap-helpers": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

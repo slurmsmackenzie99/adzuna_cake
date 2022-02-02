@@ -360,6 +360,8 @@ return [
             'username' => 'admin',
             'password' => 'root',
             'database' => 'adzuna',
+            'ignoreAuthorization' => true,
+
 
             //'encoding' => 'utf8mb4',
             'timezone' => 'UTC',

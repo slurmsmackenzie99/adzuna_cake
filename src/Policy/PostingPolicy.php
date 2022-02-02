@@ -18,8 +18,9 @@ class PostingPolicy
      * @param App\Model\Entity\Posting $posting
      * @return bool
      */
-    public function canCreate(IdentityInterface $user, Posting $posting)
+    public function canAdd(IdentityInterface $user, Posting $posting)
     {
+        //canCreate
         //all logged users can post job listings
         return true;
     }
@@ -31,7 +32,7 @@ class PostingPolicy
      * @param App\Model\Entity\Posting $posting
      * @return bool
      */
-    public function canUpdate(IdentityInterface $user, Posting $posting)
+    public function canEdit(IdentityInterface $user, Posting $posting)
     {
         //logged users can update their own articles
         return $this->isAuthor($user, $posting);
@@ -56,9 +57,9 @@ class PostingPolicy
      * @param App\Model\Entity\Posting $posting
      * @return bool
      */
-    public function canView(IdentityInterface $user, Posting $posting)
-    {
-    }
+//    public function canView(IdentityInterface $user, Posting $posting)
+//    {
+//    }
     protected function isAuthor(IdentityInterface $user, Posting $posting)
     {
         return $posting->user_id === $user->getIdentifier();

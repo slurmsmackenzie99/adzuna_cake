@@ -10,5 +10,5 @@
     <?= $this->Form->submit(__('Zaloguj')); ?>
     <?= $this->Form->end() ?>
 
-    <?= $this->Html->link("Zarejestruj się", ['action' => 'add']) ?>
+    <?= $this->Html->link("Nie masz jeszcze konta? Zarejestruj się", ['action' => 'add']) ?>
 </div><?php

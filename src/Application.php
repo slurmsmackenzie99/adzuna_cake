@@ -88,6 +88,8 @@ class Application extends BaseApplication
      */
     public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
     {
+//        $auth = new AuthorizationMiddleware($this);
+
         $middlewareQueue
             // Catch any exceptions in the lower layers,
             // and make an error page/response
@@ -107,6 +109,13 @@ class Application extends BaseApplication
             ->add(new RoutingMiddleware($this))
             ->add(new AuthenticationMiddleware($this))
             ->add(new AuthorizationMiddleware($this))
+
+//            ->add(function (ServerRequestInterface $request, ResponseInterface $response, callable $next) use ($auth) {
+//                if ($request->getParam('plugin') !== 'DebugKit') {
+//                    return $auth($request, $response, $next);
+//                }
+//                return $next($request, $response);
+//            })
         // Parse various types of encoded request bodies so that they are
             // available as array through $request->getData()
             // https://book.cakephp.org/4/en/controllers/middleware.html#body-parser-middleware
@@ -117,6 +126,15 @@ class Application extends BaseApplication
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
             ]));
+        if (Configure::read('debug')) {
+            // Disable authz for debugkit
+            $middlewareQueue->add(function ($req, $res, $next) {
+                if ($req->getParam('plugin') === 'DebugKit') {
+                    $req->getAttribute('authorization')->skipAuthorization();
+                }
+                return $next($req, $res);
+            });
+        }
 
         return $middlewareQueue;
     }
