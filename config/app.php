@@ -296,9 +296,10 @@ return [
             'persistent' => false,
             'timezone' => 'UTC',
 
-            'username' => 'admin',
-            'password' => 'root',
+            'username' => 'root',
+            'password' => '',
             'database' => 'adzuna',
+            'port' => 3306,
 
             /*
              * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
@@ -354,7 +355,7 @@ return [
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'host' => 'localhost',
-            'port' => 3306,
+//            'port' => 3306,
 
             //'port' => 'non_standard_port_number',
             'username' => 'admin',

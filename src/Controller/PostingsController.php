@@ -129,6 +129,8 @@ class PostingsController extends AppController
 
     public function search()
     {
+        $this->Authorization->skipAuthorization();
+
         $appId = "31746dcd";
         $appKey = "d3589b477595d896b7627c76dfd0b8ef";
         $baseURL = "https://api.adzuna.com/v1/api/";
@@ -137,5 +139,12 @@ class PostingsController extends AppController
 //        }
         $country = 'pl';
         $targetURL = $baseURL . "jobs";
+//        $this->set('appId',$appId,'appKey', $appKey,'baseURL', $baseURL);
+        $this->set([
+            'appId' => $appId,
+            'appKey' => $appKey,
+            'baseURL' => $baseURL,
+            'country' => $country,
+        ]);
 }
 }

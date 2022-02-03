@@ -29,30 +29,48 @@ $cakeDescription = 'Adzuna Oferty Pracy';
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
 
     <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>">Adzuna Oferty Pracy</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="http://adzunaoffers.com/">Adzuna</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="http://adzunaoffers.com/">Strona główna
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://developer.adzuna.com/">O Adzuna API</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
-        <div class="top-nav-links">
-            <?= $this->Html->link(__('Przeglądaj oferty pracy'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <!--            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>-->
-<!--            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>-->
-        </div>
-    </nav>
-    <main class="main">
-        <div class="container">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
-    </main>
-    <footer>
-    </footer>
+    </div>
+</nav>
+<main class="main">
+    <div class="container">
+        <?= $this->Flash->render() ?>
+        <?= $this->fetch('content') ?>
+    </div>
+</main>
+<footer>
+</footer>
 </body>
 </html>
