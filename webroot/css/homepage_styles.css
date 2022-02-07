@@ -7,10 +7,17 @@ body {
     overflow-x: hidden;
     perspective: 10px;
 }
+.zaloguj{
+    color: red;
+}
 .title{
-    font-size: 7rem;
+    font-size: 5rem;
     color: white;
     text-shadow: 0 0 5px black;
+}
+.subtitle{
+    font-size: 7rem;
+    color: black;
 }
 section {
     font-size: 2rem;
