@@ -217,7 +217,7 @@ TypeFactory::map('time', StringType::class);
 //Inflector::rules('uninflected', ['dontinflectme']);
 
 
-//Configure::write('DebugKit.forceEnable', true);
+Configure::write('DebugKit.forceEnable', true);
 
 //Plugin::load('Bootstrap');
 

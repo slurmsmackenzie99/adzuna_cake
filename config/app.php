@@ -349,29 +349,29 @@ return [
             'quoteIdentifiers' => false,
             'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+        ],
+        'debug_kit' => [
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'persistent' => false,
+            'host' => 'localhost',
+//            'port' => 3306,
+
+            //'port' => 'non_standard_port_number',
+            'username' => 'admin',
+            'password' => 'root',
+            'database' => 'adzuna',
+            'ignoreAuthorization' => true,
+
+
+            //'encoding' => 'utf8mb4',
+            'timezone' => 'UTC',
+            'flags' => [],
+            'cacheMetadata' => true,
+            'log' => false,'quoteIdentifiers' => false,
+
+            'url' => env('DATABASE_URL', null),
         ]
-//        'debug_kit' => [
-//            'className' => 'Cake\Database\Connection',
-//            'driver' => 'Cake\Database\Driver\Mysql',
-//            'persistent' => false,
-//            'host' => 'localhost',
-////            'port' => 3306,
-//
-//            //'port' => 'non_standard_port_number',
-//            'username' => 'admin',
-//            'password' => 'root',
-//            'database' => 'adzuna',
-//            'ignoreAuthorization' => true,
-//
-//
-//            //'encoding' => 'utf8mb4',
-//            'timezone' => 'UTC',
-//            'flags' => [],
-//            'cacheMetadata' => true,
-//            'log' => false,'quoteIdentifiers' => false,
-//
-//            'url' => env('DATABASE_URL', null),
-//        ]
     ],
 
     /*
