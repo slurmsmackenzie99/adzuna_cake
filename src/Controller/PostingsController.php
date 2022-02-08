@@ -133,40 +133,34 @@ class PostingsController extends AppController
         $this->Authorization->skipAuthorization();
         $appId = "31746dcd";
         $appKey = "d3589b477595d896b7627c76dfd0b8ef";
+//        $stanowisko = "javascript developer";
+//        $stanowisko = urlencode($stanowisko);
+
         if ($this->request->is('post')) {
             $lokalizacja = $this->request->getData('lokalizacja');
             $lokalizacja = urlencode($lokalizacja);
 
             $stanowisko = $this->request->getData('stanowisko');
             $stanowisko = urlencode($stanowisko);
+
+            $http = new Client();
+            $response = $http->get(
+                "https://api.adzuna.com/v1/api/jobs/pl/search/1?app_id=". $appId . "&app_key=" . $appKey . "&what=" . $stanowisko . "&location0=Polska&location1=pomorskie&location2=Trójmiasto&location3=Gdańsk"
+            );
+            $jsonData = json_decode($response->getStringBody());
+            $results = $jsonData->results;
+
+            $this->set('results', $results);
         };
-        $http = new Client();
-        $response = $http->get(
-            "https://api.adzuna.com/v1/api/jobs/pl/search/1?app_id=31746dcd&app_key=d3589b477595d896b7627c76dfd0b8ef&what=" . "javascript%20developer"
-        );
-        $jsonData = json_decode($response->getStringBody());
-        $results = $jsonData->results;
-//        $body = $response->getBody();
-//        $json = json_encode($body);
-////        $obj = json_decode($json, TRUE);
-        debug($results);
+//        $http = new Client();
+//        $response = $http->get(
+//            "https://api.adzuna.com/v1/api/jobs/pl/search/1?app_id=". $appId . "&app_key=" . $appKey . "&what=" . $stanowisko
+//        );
 
-//        $json = json_decode($json);
-//        $json = $json['results'][0]['description'];
-//        foreach ($results[$integer] as $key => $value) {
-//            echo $value['description'];
-//        }
-//        debug($json);
-
-//        $parsed_json = json_decode($json, true);
-//        $parsed_json = $json['results'][0]['description'];
-//        $json = $json["results"];
-//        $data = $json['results'];
-//            $data = json_encode($json);
-//            $result = $data['results'];
-//            $response = json_decode($response);
-
-//        $this->set('json', $json);
-//        , 'parsed_json', $parsed_json
+//        $jsonData = json_decode($response->getStringBody());
+//        $results = $jsonData->results;
+//
+//
+//        $this->set('results', $results);
     }
 }
