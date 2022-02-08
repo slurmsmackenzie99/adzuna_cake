@@ -144,29 +144,11 @@ class PostingsController extends AppController
         $response = $http->get(
             "https://api.adzuna.com/v1/api/jobs/pl/search/1?app_id=31746dcd&app_key=d3589b477595d896b7627c76dfd0b8ef&what=" . "javascript%20developer"
         );
+
         $jsonData = json_decode($response->getStringBody());
         $results = $jsonData->results;
-//        $body = $response->getBody();
-//        $json = json_encode($body);
-////        $obj = json_decode($json, TRUE);
-        debug($results);
 
-//        $json = json_decode($json);
-//        $json = $json['results'][0]['description'];
-//        foreach ($results[$integer] as $key => $value) {
-//            echo $value['description'];
-//        }
-//        debug($json);
 
-//        $parsed_json = json_decode($json, true);
-//        $parsed_json = $json['results'][0]['description'];
-//        $json = $json["results"];
-//        $data = $json['results'];
-//            $data = json_encode($json);
-//            $result = $data['results'];
-//            $response = json_decode($response);
-
-//        $this->set('json', $json);
-//        , 'parsed_json', $parsed_json
+        $this->set('results', $results);
     }
 }
