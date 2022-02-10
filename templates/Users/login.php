@@ -15,7 +15,7 @@
         </div>
     </fieldset>
     <br>
-    <?= $this->Form->submit(__('Zaloguj')); ?>
+    <?= $this->Form->submit(__('Zaloguj'), ['class' => 'btn btn-primary']); ?>
     <?= $this->Form->end() ?>
 </div>
 
