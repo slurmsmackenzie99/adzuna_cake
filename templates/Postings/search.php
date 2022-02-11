@@ -4,8 +4,20 @@
 <!--//, ['type' => 'get']-->
 <?= $this->Form->control('stanowisko', ['label' => 'Wpisz nazwę pozycji', 'placeholder' => 'np. mechanik', 'class' => 'form-control']); ?>
 <br>
-<?= $this->Form->control('lokalizacja', ['label' => 'Wpisz miasto', 'placeholder' => 'np. Warszawa', 'class' => 'form-control']); ?>
+<?= $this->Form->control('wojewodztwo', ['label' => 'Wybierz wojewodztwo', 'placeholder' => 'np. mazowieckie', 'class' => 'form-control']); ?>
 <br>
+<div class="form-group">
+    <label for="exampleSelect1" class="form-label mt-4">Example select</label>
+    <select class="form-select" id="exampleSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+</div>
+<br>
+<?= $this->Form->control('lokalizacja', ['label' => 'Wpisz miasto', 'placeholder' => 'np. Warszawa', 'class' => 'form-control']); ?>
 <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']); ?>
 <?= $this->Form->end(); ?>
 
