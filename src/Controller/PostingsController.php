@@ -143,9 +143,17 @@ class PostingsController extends AppController
             $stanowisko = $this->request->getData('stanowisko');
             $stanowisko = urlencode($stanowisko);
 
+            $wojewodztwo = $this->request->getData('wojewodztwo');
+            $wojewodztwo = urlencode($wojewodztwo);
+//            $wojewodztwo = 'mazowieckie';
+
+//            debug($lokalizacja);
+//            debug($stanowisko);
+//            debug($wojewodztwo); die;
             $http = new Client();
             $response = $http->get(
-                "https://api.adzuna.com/v1/api/jobs/pl/search/1?app_id=". $appId . "&app_key=" . $appKey . "&what=" . $stanowisko . "&location0=Polska&location1=mazowieckie&location2=" . $lokalizacja
+                "https://api.adzuna.com/v1/api/jobs/pl/search/1?app_id=". $appId . "&app_key=" . $appKey . "&what="
+                . $stanowisko . "&location0=Polska&location1=" . $wojewodztwo . "&location2=" . $lokalizacja
             );
             $jsonData = json_decode($response->getStringBody());
             $results = $jsonData->results;
