@@ -104,7 +104,7 @@ $cakeDescription = 'Adzuna Job Offers';
     </nav>
 
     <header>
-<!--        <img src="img/london.jpg" class="background">-->
+        <img src="img/london.jpg" class="background">
         <h1 class="title">Oferty pracy Adzuna</h1>
         <div class="oferty-buttons">
             <a href="/postings/search" class="button1">Przeglądaj oferty</a>
