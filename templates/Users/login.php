@@ -1,21 +1,15 @@
-<div class="users form">
-    <br>
-    <?= $this->Flash->render() ?>
-    <h3>Login</h3>
-    <br>
+<?php
+/**
+ * @var \App\View\AppView $this
+ */
+?>
+<div class="users form content">
     <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __('Wpisz nazwę użytkownika i hasło') ?></legend>
-        <br>
-        <div class="form-floating">
-        <?= $this->Form->control('email', ['required' => true, 'class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'name@example.com', 'label' => ['floatingInput' => 'email']]) ?>
-        </div>
-        <div class="form-floating">
-        <?= $this->Form->control('password', ['required' => true, 'class' => 'form-control', 'id' => 'floatingPassword', 'placeholder' => 'hasło']) ?>
-        </div>
+        <legend><?= __('Please enter your username and password') ?></legend>
+        <?= $this->Form->control('username') ?>
+        <?= $this->Form->control('password') ?>
     </fieldset>
-    <br>
-    <?= $this->Form->submit(__('Zaloguj'), ['class' => 'btn btn-primary']); ?>
+    <?= $this->Form->button(__('Login')); ?>
     <?= $this->Form->end() ?>
 </div>
-

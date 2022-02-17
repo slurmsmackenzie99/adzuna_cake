@@ -296,8 +296,8 @@ return [
             'persistent' => false,
             'timezone' => 'UTC',
 
-            'username' => 'root',
-            'password' => '',
+            'username' => 'adzuna',
+            'password' => '3r2e2d~W',
             'database' => 'adzuna',
             'port' => 3306,
 
@@ -350,7 +350,7 @@ return [
             'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
-        'debug_kit' => [
+/*        'debug_kit' => [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
@@ -371,7 +371,7 @@ return [
             'log' => false,'quoteIdentifiers' => false,
 
             'url' => env('DATABASE_URL', null),
-        ]
+        ]*/
     ],
 
     /*
