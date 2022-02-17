@@ -73,40 +73,39 @@ $cakeDescription = 'Adzuna Job Offers';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Adzuna</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="http://adzunaoffers.com/">Strona główna
-                        <span class="visually-hidden">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://developer.adzuna.com/">Adzuna-API</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
 <div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Adzuna</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://adzunaoffers.com/">Strona główna
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://developer.adzuna.com/">Adzuna-API</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <img src="img/london.jpg" class="background">
-        <!--        <img src="img/workers.png" class="foreground">-->
         <h1 class="title">Oferty pracy Adzuna</h1>
-<!--        <h2 class="subtitle">Test</h2>-->
         <div class="oferty-buttons">
             <a href="/postings/search" class="button1">Przeglądaj oferty</a>
             <a href="/postings/add" class="button1">Dodaj ofertę</a>
